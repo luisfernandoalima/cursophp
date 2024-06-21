@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>Conversor de moedas 1.0</h1>
+        <h1>Conversor de moedas v1.0</h1>
     </header>
     <main>
       <?php 
