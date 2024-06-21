@@ -7,7 +7,7 @@
 
   $dados = json_decode(file_get_contents($url), true);
 
-$cotação = $dados["value"][0]["cotacaoCompra"];
+  $cotação = $dados["value"][0]["cotacaoCompra"];
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +27,10 @@ $cotação = $dados["value"][0]["cotacaoCompra"];
         $valor = $_GET['numero'];
 
         $valorDolar = number_format($valor / $cotação,2);
+
+        $padrao = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
       ?>
-        <p>Seus R$<?php echo $valor;?> equivalem a US$<?php echo $valorDolar?> </p>
+        <p>Seus <?php echo numfmt_format_currency($padrao, $valor, "BRL");?> equivalem a <?php echo numfmt_format_currency($padrao, $valorDolar, "USD")?> </p>
         <p>Cotação obtida diretamente do <strong>banco central</strong></p>
         <p><a href="javascript:history.go(-1)">Voltar</a></p>
     </main>
